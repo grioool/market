@@ -1,0 +1,127 @@
+.supplyClass {
+  width: 356px;
+  height: 42px;
+  left: calc(50% - 356px/2 - 0.5px);
+  top: calc(50% - 42px/2 + 184px);
+
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.back-panel {
+    cursor: pointer;
+}
+
+.back-text {
+    width: 45px;
+    height: 20px;
+    margin-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 14px;
+
+    text-align: center;
+    color: #000000;
+}
+
+.img {
+    background: #7B8E98;
+}
+
+
+.button {
+  width: 239px;
+  height: 54px;
+  left: 110px;
+  top: 215px;
+
+  background: #9588E1;
+  border-radius: 20px;
+
+  display: block;
+
+  text-align: center;
+  border: 1px solid #CFD8DC;
+
+  cursor: pointer;
+  margin-bottom: 20px;
+
+
+  color: #1A1A1A;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+.table {
+    text-align: center;
+    border-radius: 20px;
+    display: block;
+    overflow: hidden;
+
+    color: #1A1A1A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.tableTop {
+    width: 1220px;
+    height: 68px;
+
+    background: #F2F2F2;
+
+    font-style: normal;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.tableBody {
+    width: 1220px;
+
+    background: #D4D0EA;
+    border-radius: 20px;
+}
+
+.tableBody td {
+    height: 65px;
+    backdrop-filter: drop-shadow(2px 6px 5px rgba(191, 191, 191, 0.25));
+    background: #ECEBF4;
+
+    font-style: normal;
+    font-size: 10px;
+    line-height: 20px;
+
+    min-width: 50px;
+}
+
+.tableBody .table-btn {
+    cursor: pointer;
+    color: #1A1A1A;
+    font-weight: 800;
+}
+
+.tableBody .table-btn:hover {
+    background: #c3c0de;
+}
+
+p {
+    color: #1A1A1A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+}

@@ -1,0 +1,151 @@
+.profileClass {
+  margin-bottom: 70px;
+  width: 356px;
+  height: 42px;
+  left: calc(50% - 356px/2 - 0.5px);
+  top: calc(50% - 42px/2 + 184px);
+
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 32px;
+
+  display: flex;
+
+  color: #000000;
+}
+
+.back-panel {
+    cursor: pointer;
+}
+
+.back-text {
+    width: 45px;
+    height: 20px;
+    margin-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 14px;
+
+    text-align: center;
+    color: #000000;
+}
+
+.img {
+    background: #7B8E98;
+}
+
+.btn {
+  margin-top: 40px;
+  background: #B0A4FA;
+  display: block;
+  color: #1A1A1A;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+
+  width: 200px;
+  height: 48px;
+  text-align: center;
+  border: 1px solid #CFD8DC;
+  border-radius: 55px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+input[type=text], input[class=hidden], input[name="password"], input[name="wb"]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 16px;
+
+    position: static;
+    width: 356px;
+    left: calc(50% - 356px/2);
+    top: 35%;
+    bottom: 35%;
+
+    margin: 10px 0 10px 0;
+    background: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #7B8E98;
+
+    font-size: 16px;
+    line-height: 20px;
+
+    border: 1px solid #CFD8DC;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: static;
+    left: calc(50% - 356px/2);
+    top: 35%;
+    bottom: 35%;
+
+    margin: 30px 0 30px 0;
+    background: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #7B8E98;
+
+    font-size: 18px;
+}
+
+.hidden {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
+
+  position: static;
+  width: 356px;
+  left: calc(50% - 356px/2);
+  top: 35%;
+  bottom: 35%;
+
+  margin: 30px 0 30px 0;
+  background: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #7B8E98;
+
+  font-size: 16px;
+}
+
+.eyeButton {
+    position: absolute;
+    top: -45px;
+    left: 400px;
+    background: #B0A4FA;
+    color: #1A1A1A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #CFD8DC;
+    border-radius: 55px;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+
+

@@ -1,0 +1,48 @@
+
+services:
+  backend:
+    container_name: backend
+    build: ./target/restfulSpring.war
+    networks:
+      - marketplace
+    depends_on:
+      - pgdb
+    volumes:
+      - ./target/restfulSpring.war:/usr/local/tomcat/webapps/ROOT.war
+    ports:
+      - "8080:8080"
+      - "80:80"
+
+  pgdb:
+    container_name: pgdb
+    image: postgres
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: marketplace
+    ports:
+      - 5432:5432
+    networks:
+      - marketplace
+
+  frontend:
+    container_name: frontend
+    build: ./frontend/
+    ports:
+      - '4200:4200'
+
+networks:
+  marketplace:
+    driver: bridge
+
+volumes:
+  pgdata:
+
+#  angular-docker:
+#    container_name: frontend
+#    build: ./front
+#    ports:
+#      - '9000:80'

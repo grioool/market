@@ -1,0 +1,64 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+
+<h1 class="reportClass">Отчет о продажах</h1>
+
+<label>From date: </label>
+<input type="date" [(ngModel)]="dateFrom" (blur)="load()" class="button"/>
+<label>To date: </label>
+<input type="date" [(ngModel)]="dateTo" (blur)="load()" class="button"/>
+
+<table clbuttonass="table table-striped">
+    <thead>
+    <tr class="tableTop">
+        <td>Id</td>
+        <td>Номер заказа</td>
+        <td>Id поставки</td>
+        <td>Наименование</td>
+        <td>Цена заказа</td>
+        <td>Выручка</td>
+        <td>Логистика</td>
+        <td>Себестоимость</td>
+        <td>Комиссия</td>
+        <td>Прибыль</td>
+        <td>Комиссия %</td>
+        <td>Дата заказа</td>
+        <td>Дата продажи</td>
+    </tr>
+    </thead>
+    <tbody class="tableBody">
+    <tr *ngFor="let report of reports">
+            <td>{{report.id}}</td>
+            <td>{{report.orderNumber}}</td>
+            <td>{{report.supply.wildberriesId}}</td>
+            <td>{{report.costPrice === -1 ? supplyNotFound : report.name}}</td>
+            <td>{{report.orderPrice}}</td>
+            <td>{{report.proceeds}}</td>
+            <td>{{report.logistics}}</td>
+            <td>{{report.costPrice === -1 ? supplyNotFound : report.costPrice}}</td>
+            <td>{{report.commission}}</td>
+            <td>{{report.costPrice === -1 ? supplyNotFound : report.profit}}</td>
+            <td>{{report.commissionPerCent}}</td>
+            <td>{{report.dateSale}}</td>
+            <td>{{report.dateOrder}}</td>
+    </tbody>
+</table>
+
+
+<div class="table-navigation-container  col-10">
+    <app-list-navigator class="float-right"
+                        (onChanged)="setPageSelected($event)"
+                        [totalAmount]="totalAmount"
+                        [amountOnPage]="amountOnPage"
+                        [pageShortcutsAmount]="3">
+
+    </app-list-navigator>
+</div>
+
+<p class="total-amount col-2">Total: {{ totalAmount }}</p>
+
+<div>{{statusMessage}}</div>
+

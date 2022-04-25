@@ -1,0 +1,29 @@
+<header class="header">
+    <div id="headerText">
+        <span class="grioool" (click)="routeTo(navigationPath.MAIN)">
+          AutoMarket
+        </span>
+        <ul class="menu">
+            <ng-container *ngIf="isMenuActive()">
+                <li (click)="routeTo(navigationPath.PROFILE)">
+                    Профиль
+                </li>
+                <li (click)="routeTo(navigationPath.SUPPLIES)">
+                    Поставки
+                </li>
+                <li (click)="routeTo(navigationPath.PURCHASES)">
+                    Закупки
+                </li>
+                <li (click)="routeTo(navigationPath.REPORTS)">
+                    Отчет о продажах
+                </li>
+                <li (click)="OnLogout()">
+                    Выйти
+                </li>
+            </ng-container>
+            <li (click)="changeLang()">
+                {{currentLang.label}}
+            </li>
+        </ul>
+    </div>
+</header>

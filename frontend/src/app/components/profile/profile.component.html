@@ -1,0 +1,15 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="profileClass">Профиль</h1>
+
+<ul class="menu">
+  <li (click)="routeTo(navigationPath.INFORMATION)" >
+    Личная информация
+  </li>
+  <li (click)="routeTo(navigationPath.USERS)" *ngIf="service.isAdmin()">
+    Пользователи
+  </li>
+</ul>

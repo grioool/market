@@ -1,0 +1,70 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="orderClass">Заказы WB</h1>
+
+<label>From date: </label>
+<input type="date" [(ngModel)]="dateFrom" (blur)="load()" class="button"/>
+
+<table class="table table-striped">
+    <thead>
+    <tr class="tableTop">
+        <td>Номер заказа</td>
+        <td>Дата заказа</td>
+        <td>Дата время обновления информации в сервисеа</td>
+        <td>Ваш артикул</td>
+        <td>Размер</td>
+        <td>Штрих-код</td>
+        <td>Кол-во</td>
+        <td>Цена до согласованной скидки/промо/спп</td>
+        <td>Согласованный итоговый дисконт</td>
+        <td>Склад отгрузки</td>
+        <td>Область</td>
+        <td>Номер поставки</td>
+        <td>Уникальный идентификатор позиции заказа</td>
+        <td>Код WB</td>
+        <td>Предмет</td>
+        <td>Категория</td>
+        <td>Бренд</td>
+        <td>Отмена заказа. 1 – заказ отменен до оплаты</td>
+    </tr>
+    </thead>
+
+    <tbody class="tableBody">
+    <tr *ngFor="let order of orders">
+            <td>{{order.gNumber}}</td>
+            <td>{{order.date | date}}</td>
+            <td>{{order.lastChangeDate | date}}</td>
+            <td>{{order.supplierArticle}}</td>
+            <td>{{order.techSize}}</td>
+            <td>{{order.barcode}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.totalPrice}}</td>
+            <td>{{order.warehouseName}}</td>
+            <td>{{order.oblast}}</td>
+            <td>{{order.incomeID}}</td>
+            <td>{{order.odid}}</td>
+            <td>{{order.nmid}}</td>
+            <td>{{order.subject}}</td>
+            <td>{{order.category}}</td>
+            <td>{{order.brand}}</td>
+            <td>{{order.is_cancel}}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="table-navigation-container  col-10">
+    <app-list-navigator class="float-right"
+                        (onChanged)="setPageSelected($event)"
+                        [totalAmount]="totalAmount"
+                        [amountOnPage]="amountOnPage"
+                        [pageShortcutsAmount]="3">
+
+    </app-list-navigator>
+</div>
+
+<p class="total-amount col-2">Total: {{ totalAmount }}</p>
+

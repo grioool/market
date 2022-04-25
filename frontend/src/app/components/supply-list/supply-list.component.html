@@ -1,0 +1,113 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="supplyClass">Поставки</h1>
+<button (click)="addSupply()" class="button">Добавить поставку</button>
+
+<table class="table table-striped">
+  <thead>
+  <tr class="tableTop">
+  <td>Id</td>
+  <td>Id закупки</td>
+  <td>Id склада</td>
+  <td>Дата </td>
+  <td>Товар</td>
+  <td>Количество</td>
+  <td>Логистика</td>
+  <td>Закупка</td>
+  <td>Фулфилмент</td>
+  <td>Себестоимость</td>
+  </tr>
+</thead>
+  <tbody class="tableBody">
+  <tr *ngFor="let supply of supplies">
+    <ng-container *ngIf="isReadOnly(supply)">
+      <td>{{supply.wildberriesId}}</td>
+      <td>{{supply.purchase.id}}</td>
+      <td>{{supply.storage.id}}</td>
+      <td>{{supply.date}}</td>
+      <td>{{supply.product}}</td>
+      <td>{{supply.amount}}</td>
+      <td>{{supply.logistics}}</td>
+      <td>{{supply.purchasePrice}}</td>
+      <td>{{supply.fulfillment}}</td>
+      <td>{{supply.costPrice}}</td>
+      <td class="table-btn" (click)="editSupply(supply)">
+        Изменить
+      </td>
+      <td class="table-btn" (click)="deleteSupply(supply.id)">
+        Удалить
+      </td>
+    </ng-container>
+    <ng-container *ngIf="isEditable(supply)">
+      <td>
+        <input type="number" *ngIf="isNewRecord" [(ngModel)]="editedSupply.wildberriesId" class="form-control">
+          <select *ngIf="!isNewRecord" [(ngModel)]="editedSupply.wildberriesId" class="form-control">
+              <option *ngFor="let id of suppliesIds" [ngValue]="id">
+                  {{id}}
+              </option>
+          </select>
+      </td>
+      <td>
+        <select [(ngModel)]="editedSupply.purchase" class="form-control">
+          <option *ngFor="let purchase of purchases" [ngValue]="purchase">
+              {{purchase.id + ", " + purchase.productName}}</option>
+        </select>
+      </td>
+      <td>
+          <select [(ngModel)]="editedSupply.storage" class="form-control">
+              <option *ngFor="let storage of storages" [ngValue]="storage">
+                  {{storage.id + ", " + storage.country.countryName + ", " + storage.town.townName}}</option>
+          </select>
+      </td>
+      <td>
+        <input type="date" [(ngModel)]="editedSupply.date" class="form-control">
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="editedSupply.product" class="form-control">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="editedSupply.amount" class="form-control">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="editedSupply.logistics" class="form-control">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="editedSupply.purchasePrice" class="form-control">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="editedSupply.fulfillment" class="form-control">
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="editedSupply.costPrice" class="form-control">
+      </td>
+      <td class="table-btn" (click)="saveSupply()">
+          Сохранить
+      </td>
+      <td class="table-btn" (click)="cancel()">
+        Отмена
+      </td>
+    </ng-container>
+    <ng-template [ngTemplateOutlet]="loadTemplate(supply)"
+                             [ngTemplateOutletContext]="{ $implicit: supply}">
+    </ng-template>
+  </tr>
+</tbody>
+</table>
+
+<div class="table-navigation-container  col-10">
+    <app-list-navigator class="float-right"
+                        (onChanged)="setPageSelected($event)"
+                        [totalAmount]="totalAmount"
+                        [amountOnPage]="amountOnPage"
+                        [pageShortcutsAmount]="3">
+
+    </app-list-navigator>
+</div>
+
+<p class="total-amount col-2">Total: {{ totalAmount }}</p>
+
+<div>{{statusMessage}}</div>
+

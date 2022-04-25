@@ -1,0 +1,53 @@
+<form [formGroup]="registrationForm" novalidate>
+    <div class="container">
+        <h1 class="register">Регистрация</h1>
+
+        <input type="text" formControlName="username" placeholder="Username" name="username" required>
+
+        <div *ngIf="username.invalid && (username.touched || username.dirty)">
+            <span *ngIf="username.errors['required']">Поле должно быть заполнено.</span>
+            <span *ngIf="username.errors['pattern']">Поле должно содержать только буквы.</span>
+        </div>
+
+        <input type="text" formControlName="email" placeholder="Email" name="email" required>
+
+        <div *ngIf="email.invalid && (email.touched || email.dirty )">
+            <span *ngIf="email.errors['required']">Поле должно быть заполнено.</span>
+            <span *ngIf="email.errors['email']">Некорректный email.</span>
+        </div>
+
+        <input type="password" formControlName="password" placeholder="Пароль" name="psw" required>
+
+        <div *ngIf="password.invalid && (password.touched || password.dirty)">
+            <span *ngIf="password.errors['required']">Поле должно быть заполнено.</span>
+            <span *ngIf="password.errors['pattern']">Пароль должен содержать от 6 до 20 букв, содержать одну цифру, одну большую букву.</span>
+        </div>
+
+        <input type="password" formControlName="passwordRep" placeholder="Повторите пароль" name="psw-repeat" required>
+
+        <span *ngIf="password.value !== passwordRep.value">Пароли не совпадают.</span>
+        <div *ngIf="passwordRep.invalid && (passwordRep.touched || passwordRep.dirty)">
+            <span *ngIf="passwordRep.errors['required']">Поле должно быть заполнено.</span>
+        </div>
+
+        <input type="text" formControlName="nameCompany" placeholder="Название юридического лица" name="nameC" required>
+
+        <div *ngIf="nameCompany.invalid && (nameCompany.touched || nameCompany.dirty)">
+            <span *ngIf="nameCompany.errors['required']">Поле должно быть заполнено.</span>
+            <span *ngIf="nameCompany.errors['pattern']">Поле должно содержать только буквы.</span>
+        </div>
+
+        <input type="text" formControlName="wbKey" placeholder="Ключ от WB" name="wb" required>
+
+        <div *ngIf="wbKey.invalid && (wbKey.touched || wbKey.dirty)">
+            <span *ngIf="wbKey.errors['required']">Поле должно быть заполнено.</span>
+            <span *ngIf="wbKey.errors['pattern']">Поле должно содержать только цифры и буквы.</span>
+        </div>
+
+        <p>Регистрируясь на сайте, вы соглашаетесь с нашими Правилами и Политикой конфиденциальности и соглашаетесь на
+            информационную рассылку.</p>
+        <button type="submit" (click)="OnRegister()" class="registerbtn">Зарегистрироваться</button>
+        <button (click)="OnLogin()" class="loginbtn">Войти</button>
+
+    </div>
+</form>

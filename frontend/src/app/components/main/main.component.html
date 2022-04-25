@@ -1,0 +1,28 @@
+<div class="name">Автоматизация маркетплейса</div>
+
+<div class="row">
+    <div class="rectangle">
+        <p>Отчет Wildberries</p>
+        <span>Здесь вы можете просмотреть продажи и заказы маркетплейса</span>
+        <div class="wb-panel">
+            <span (click)="routeTo(navigationPath.SALES)" class="button-wb">Продажи</span>
+            <span (click)="routeTo(navigationPath.ORDERS)" class="button-wb">Заказы</span>
+        </div>
+    </div>
+    <div (click)="routeTo(navigationPath.SUPPLIES)" class="rectangle">
+        <p>Поставки</p>
+        <span>Здесь вы можете просмотреть поставки маркетплейса</span>
+    </div>
+</div>
+
+<div class="row">
+    <div (click)="routeTo(navigationPath.PURCHASES)" class="rectangle">
+        <p>Закупки</p>
+        <span>Здесь вы можете просмотреть закупки маркетплейса</span>
+    </div>
+    <div (click)="routeTo(navigationPath.REPORTS)" class="rectangle">
+        <p>Отчет о продажах</p>
+        <span>Здесь вы можете просмотреть отчет о продажах маркетплейса</span>
+    </div>
+
+</div>

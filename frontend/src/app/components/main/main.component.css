@@ -1,0 +1,70 @@
+.name {
+    width: 850px;
+    margin-bottom: 80px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 56px;
+
+    vertical-align: center;
+
+    color: #000000;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.rectangle p {
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.rectangle span {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.rectangle {
+    display: inline-block;
+    margin-right: 52px;
+    width: 490px;
+    height: 234px;
+    background: linear-gradient(110deg, #9588E1, #FF87DD);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 23.6449px;
+    padding: 25px;
+    cursor: pointer;
+    transition: 100ms ease-in;
+}
+
+.rectangle:hover {
+    transform: scale(1.1);
+}
+
+.rectangle .button-wb {
+    display: inline-block;
+    background: linear-gradient(110deg, #FF87DD, #9588E1);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 23.6449px;
+    padding: 5px 20px;
+    opacity: 0;
+    transition: 100ms ease-in;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.rectangle:hover .button-wb {
+    opacity: 1;
+}
+
+.rectangle .wb-panel {
+    padding-top: 20px;
+}
+
+.rectangle .button-wb:hover {
+    transform: scale(1.1);
+}

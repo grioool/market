@@ -1,0 +1,24 @@
+<form [formGroup]="loginForm" novalidate>
+  <div class="container">
+
+    <h1 class="login">Вход</h1>
+
+    <input type="text" formControlName="username" placeholder="Username">
+
+    <div *ngIf="username.invalid && (username.touched || username.dirty)">
+      <span *ngIf="username.errors?.['required']">Поле должно быть заполнено.</span>
+    </div>
+
+    <input type="password" formControlName="password" placeholder="Пароль">
+
+    <div *ngIf="password.invalid && (password.touched || password.dirty)">
+      <span *ngIf="password.errors['required']">Поле должно быть заполнено.</span>
+      <span *ngIf="password.errors['pattern']">Поле должно быть заполнено.</span>
+    </div>
+
+    <button (click)="OnResetPassword()" class="resetbtn">Восстановить пароль</button>
+
+    <button type="submit" (click)="OnLogin()" class="loginbtn">Войти</button>
+    <button (click)="OnRegister()" class="registerbtn">Зарегистрироваться</button>
+  </div>
+</form>

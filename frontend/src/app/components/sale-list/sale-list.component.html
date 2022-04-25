@@ -1,0 +1,91 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="saleClass">Продажи WB</h1>
+
+<label>From date: </label>
+<input type="date" [(ngModel)]="dateFrom" (blur)="load()" class="button"/>
+
+<table class="table table-striped">
+    <thead>
+    <tr class="tableTop">
+        <td>Номер заказа</td>
+        <td>Номер документа</td>
+        <td>Дата продажи</td>
+        <td>Дата время обновления информации в сервисе</td>
+        <td>Ваш артикул</td>
+        <td>Размер</td>
+        <td>Штрих-код</td>
+        <td>Кол-во</td>
+        <td>Начальная розничная цена товара</td>
+        <td>Согласованная скидка на товар</td>
+        <td>Договор поставки</td>
+        <td>Договор реализации</td>
+        <td>Согласованный промокод</td>
+        <td>Склад отгрузки</td>
+        <td>Страна</td>
+        <td>Округ</td>
+        <td>Регион</td>
+        <td>Номер поставки</td>
+        <td>Уникальный идентификатор продажи/возврата</td>
+        <td>Уникальный идентификатор позиции заказа</td>
+        <td>Согласованная скидка постоянного покупателя (СПП)</td>
+        <td>К перечислению поставщику</td>
+        <td>Фактическая цена из заказа (с учетом всех скидок, включая и от ВБ)</td>
+        <td>Цена, от которой считается вознаграждение поставщика forpay (с учетом всех согласованных скидок)</td>
+        <td>Код WB</td>
+        <td>Предмет</td>
+        <td>Категория</td>
+        <td>Бренд</td>
+    </tr>
+    </thead>
+
+    <tbody class="tableBody">
+    <tr *ngFor="let sale of sales">
+            <td>{{sale.gNumber}}</td>
+            <td>{{sale.number}}</td>
+            <td>{{sale.date | date}}</td>
+            <td>{{sale.lastChangeDate | date}}</td>
+            <td>{{sale.supplierArticle}}</td>
+            <td>{{sale.techSize}}</td>
+            <td>{{sale.barcode}}</td>
+            <td>{{sale.quantity}}</td>
+            <td>{{sale.totalPrice}}</td>
+            <td>{{sale.discountPercent}}</td>
+            <td>{{sale.isSupply}}</td>
+            <td>{{sale.isRealization}}</td>
+            <td>{{sale.promoCodeDiscount}}</td>
+            <td>{{sale.warehouseName}}</td>
+            <td>{{sale.countryName}}</td>
+            <td>{{sale.oblastOkrugName}}</td>
+            <td>{{sale.regionName}}</td>
+            <td>{{sale.incomeID}}</td>
+            <td>{{sale.saleID}}</td>
+            <td>{{sale.odid}}</td>
+            <td>{{sale.spp}}</td>
+            <td>{{sale.forpay}}</td>
+            <td>{{sale.finishedPrice}}</td>
+            <td>{{sale.pricewithdisc}}</td>
+            <td>{{sale.nmid}}</td>
+            <td>{{sale.subject}}</td>
+            <td>{{sale.category}}</td>
+            <td>{{sale.brand}}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="table-navigation-container  col-10">
+    <app-list-navigator class="float-right"
+                        (onChanged)="setPageSelected($event)"
+                        [totalAmount]="totalAmount"
+                        [amountOnPage]="amountOnPage"
+                        [pageShortcutsAmount]="3">
+
+    </app-list-navigator>
+</div>
+
+<p class="total-amount col-2">Total: {{ totalAmount }}</p>
+

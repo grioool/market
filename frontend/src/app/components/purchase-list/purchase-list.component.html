@@ -1,0 +1,103 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="purchaseClass">Закупки</h1>
+<button (click)="addPurchase()" class="button">Добавить товар</button>
+
+<table class="table table-striped">
+    <thead>
+    <tr class="tableTop">
+        <td>Id</td>
+        <td>Дата отгрузки от поставщика</td>
+        <td>Наименование товара</td>
+        <td>Цена за штуку</td>
+        <td>Количество</td>
+        <td>Закупка</td>
+        <td>Логистика</td>
+        <td>Доп расходы</td>
+        <td>Себестоимость</td>
+        <td>Цена партии</td>
+    </tr>
+    </thead>
+    <tbody class="tableBody">
+    <tr *ngFor="let purchase of purchases">
+        <ng-container *ngIf="isReadOnly(purchase)">
+            <td>{{purchase.id}}</td>
+            <td>{{purchase.date}}</td>
+            <td>{{purchase.productName}}</td>
+            <td>{{purchase.priceForOne}}</td>
+            <td>{{purchase.amount}}</td>
+            <td>{{purchase.purchasePrice}}</td>
+            <td>{{purchase.logistics}}</td>
+            <td>{{purchase.extra}}</td>
+            <td>{{purchase.costPrice}}</td>
+            <td>{{purchase.batchPrice}}</td>
+            <td class="table-btn" (click)="editPurchase(purchase)">
+                Изменить
+            </td>
+            <td class="table-btn" (click)="deletePurchase(purchase.id)">
+                Удалить
+            </td>
+        </ng-container>
+        <ng-container *ngIf="isEditable(purchase)">
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.id" readonly disabled class="form-control">
+            </td>
+            <td>
+                <input type="date" [(ngModel)]="editedPurchase.date" class="form-control">
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="editedPurchase.productName" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.priceForOne" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.amount" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.purchasePrice" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.logistics" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.extra" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.costPrice" class="form-control">
+            </td>
+            <td>
+                <input type="number" [(ngModel)]="editedPurchase.batchPrice" class="form-control">
+            </td>
+            <td class="table-btn" (click)="savePurchase()">
+                Сохранить
+            </td>
+            <td class="table-btn" (click)="cancel()">
+                Отмена
+            </td>
+        </ng-container>
+        <ng-template [ngTemplateOutlet]="loadTemplate(purchase)"
+                     [ngTemplateOutletContext]="{ $implicit: purchase}">
+        </ng-template>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="table-navigation-container  col-10">
+    <app-list-navigator class="float-right"
+                        (onChanged)="setPageSelected($event)"
+                        [totalAmount]="totalAmount"
+                        [amountOnPage]="amountOnPage"
+                        [pageShortcutsAmount]="3">
+
+    </app-list-navigator>
+</div>
+
+<p class="total-amount col-2">Total: {{ totalAmount }}</p>
+
+<div>{{statusMessage}}</div>
+

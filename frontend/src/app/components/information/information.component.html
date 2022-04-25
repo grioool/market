@@ -1,0 +1,49 @@
+<div (click)="back()" class="back-panel">
+    <img src="../../../assets/leftArrow.png" alt="Back"/>
+    <span class="back-text">Назад</span>
+</div>
+
+<h1 class="profileClass">Личная информация</h1>
+
+<div class="container">
+
+    <ng-container *ngIf="isReadOnly(user)">
+        <p>В целях безопасности личная информация скрыта </p>
+        <button type="submit" class="btn" (click)="editUser(user)">Показать</button>
+    </ng-container>
+
+    <ng-container *ngIf="isEditable(user)">
+
+        <p>Email: </p>
+        <input type="text" [(ngModel)]="editedUser.email" placeholder="Email" name="email" required>
+
+        <p>Имя: </p>
+        <input type="text" [(ngModel)]="editedUser.username" placeholder="Username" name="username" required>
+
+        <p>Название компании: </p>
+        <input type="text" [(ngModel)]="editedUser.nameCompany" placeholder="Название юридического лица" name="nameC"
+               required>
+
+        <p>Ключ WB: </p>
+        <input type="text" class="hidden" [(ngModel)]="editedUser.wildBerriesKeys" placeholder="Ключ от WB" name="wb"
+               [type]="hide ? 'password' : 'text'" required>
+
+        <p>Пароль: </p>
+        <span style="position: relative">
+            <input type="password" readonly class="hidden" [(ngModel)]="editedUser.password" placeholder="Пароль"
+                   name="password"required>
+            <button type="button" class="eyeButton" (click)="hideText()"><i class='fas fa-eye fa-lg'></i></button>
+        </span>
+
+        <button type="submit" class="btn" (click)="updateUser(this.editedUser)">Сохранить</button>
+
+        <button type="submit" class="btn" (click)="OnChange()">Изменить пароль</button>
+
+    </ng-container>
+
+    <ng-template [ngTemplateOutlet]="loadTemplate(user)"
+                 [ngTemplateOutletContext]="{ $implicit: user}">
+    </ng-template>
+
+</div>
+

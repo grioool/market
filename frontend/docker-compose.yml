@@ -1,0 +1,11 @@
+services:
+    angular-docker:
+        container_name: frontend_test
+        build: .
+        ports:
+            - '9000:80'
+
+networks:
+    default:
+        name: "marketplace"
+        external: true
